@@ -9,7 +9,7 @@ KEYS = ["Banana", "Cenas", "Cherries"] # Lista com os valores a procurar
 ITERATOR_START = 1 # row onde começa a escrever no resultado
 
 
-UNDEF_START = 2 # row onde mete os valores nao definidos
+UNDEF_START = 1 # row onde mete os valores nao definidos
 
 
 INPUT_FILE = 'produceSales.xlsx' # Ficheiro original a ler
@@ -25,8 +25,8 @@ KEY_COL = 0
 
 try:
 
-    if ITERATOR_START >= UNDEF_START:
-        raise Exception('iterator is greater than undef. This will result in data being overwritten in the output file')
+    # if ITERATOR_START >= UNDEF_START:
+    #    raise Exception('iterator is greater than undef. This will result in data being overwritten in the output file')
     iterator = ITERATOR_START # define o interator com o valor da row onde começa a escrever no resultado
     undef = UNDEF_START # reduz a variavel UNDEF_START definida em cima para undef
 
