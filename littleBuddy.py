@@ -46,7 +46,7 @@ try:
             if row[KEY_COL].value == i: # Se o valor na coluna a procurar da row for igual ao valor da lista
                 for cell in row: # Para o valor na celula da row faz
                     newWs.cell(row=iterator, column=cell.column).value = cell.value #copia valores para ficheiro de destino
-                iterator += 1 # adiciona 1 ao iterador
+                iterator += 1 # adiciona 1 ao iterador para passar para a proxima row
                 # if iterator >= UNDEF_START: # se o iterador for maior que 50
                 #     raise Exception('Iterator has reached range reserved for undefined rows. Iterator: ' + str(
                 #         iterator) + ' Undef_Start: ' + str(UNDEF_START))
@@ -55,7 +55,7 @@ try:
         if row[KEY_COL].value not in KEYS: # se o valor na coluna a procurar da row nao estiver nas lista
             for cell in row: # percorre as cell em pelas row
                 ws3.cell(row=undef, column=cell.column).value = cell.value # copia os valores para o ficheiro de destino
-            undef += 1 # adiciona 1 ao iterador
+            undef += 1 # adiciona 1 ao iterador para passar para a proxima row
     newWb.save(filename=OUTPUT_FILE) # guarda o ficheiro de destino
 
 except FileNotFoundError as e:
