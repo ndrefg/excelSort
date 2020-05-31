@@ -2,8 +2,7 @@ from openpyxl import Workbook
 from openpyxl import load_workbook
 
 # -----Start Config----------------#
-
-KEYS = ["Banana", "Cenas", "Cherries"] # Lista com os valores a procurar
+from vars import KEYS # Importa lista KEYS do ficheiro
 
 
 ITERATOR_START = 1 # row onde começa a escrever no resultado
@@ -25,8 +24,6 @@ KEY_COL = 0
 
 try:
 
-    # if ITERATOR_START >= UNDEF_START:
-    #    raise Exception('iterator is greater than undef. This will result in data being overwritten in the output file')
     iterator = ITERATOR_START # define o interator com o valor da row onde começa a escrever no resultado
     undef = UNDEF_START # reduz a variavel UNDEF_START definida em cima para undef
 
@@ -47,9 +44,6 @@ try:
                 for cell in row: # Para o valor na celula da row faz
                     newWs.cell(row=iterator, column=cell.column).value = cell.value #copia valores para ficheiro de destino
                 iterator += 1 # adiciona 1 ao iterador para passar para a proxima row
-                # if iterator >= UNDEF_START: # se o iterador for maior que 50
-                #     raise Exception('Iterator has reached range reserved for undefined rows. Iterator: ' + str(
-                #         iterator) + ' Undef_Start: ' + str(UNDEF_START))
 
     for row in ws.iter_rows(): # itera pelas rows todas
         if row[KEY_COL].value not in KEYS: # se o valor na coluna a procurar da row nao estiver nas lista
